@@ -5,8 +5,50 @@
   box-sizing:border-box;
 }
 
+.big-news-image {
+  border-bottom: 4px solid red;
+}
+
+header {
+  border-top: 4px solid red;
+  border-bottom: 1px solid red;
+}
+
+header > .container > img {
+  height: auto;
+  width: 40%;
+  padding: 15px 0;
+}
+
 img {
   max-width: 100%;
   height: auto;
-  border-bottom: 4px solid red;
+}
+
+ul {
+  padding: 0; /* don't indent the list */
+  list-style-type: none; /* no bullets on the list items, please! */
+}
+
+ul > li {
+  border-top: 2px dotted #C8C8C8;
+}
+
+li:first-of-type {
+  border-top: 0;
+}
+
+.category {
+  color: red;
+  font-weight: 700;
+}
+
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.news-topic-summary {
+  padding: 30px 0;
+  border-top: 1px solid #C8C8C8;
 }
