@@ -10,8 +10,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-		<!-- My own custom style sheets -->
-		<link href="css/custom-style.css" rel="stylesheet">
+	<!-- My own custom style sheets -->
+	<link href="css/custom-style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,11 +21,32 @@
     <![endif]-->
   </head>
   <body>
-		<header>
-			<div class="container">
-				<img src="images/logo.png" alt="Newsweek"> <!-- height="58" width="382"> -->
-			</div>
-		</header>
+
+	 	<header class="" style="min-height: 50px; display:flex; align-items:center;">
+		<div class="col-md-3">
+	      <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Newsweek" style="min-width:150px;"></a>
+	    </div>		
+	    
+	    <!-- mimic the old-style drop down used by NewsWeek -->
+		<div class="dropdown" style="margin-left:auto;">
+			<button class="col-md-9 btn btn-default dropdown-toggle" style="border:none !important; background:transparent;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">		
+				<span class="glyphicon glyphicon-menu-down" style="border:2px solid red; color:red; padding:2px;"></span>
+			</button>
+			
+			<ul id="main-menu" class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+					<li><a href="#">U.S.</a></li>       		         
+					<li><a href="#">World</a></li>
+					<li><a href="#">Business</a></li>
+					<li><a href="#">Tech &amp; Science</a></li>
+					<li><a href="#">Culture</a></li>
+					<li><a href="#">Sports</a></li>
+					<li><a href="#">Opinion</a></li>
+					<li><a href="#">News Feed</a></li>
+					<li><a href="#">This Week's Edition</a></li>
+			</ul>		
+		</div>
+		
+	</header>
 		<div class="container bg-success">
 
 			<div id="page-content" class="col-lg-9 col-md-8 col-sm-8 bg-danger">
@@ -55,7 +76,6 @@
 							</div>
 						</div>
 							
-
 					  <div class="row news-topic-summary">
 							<div class="col-md-6">
 								<img src="images/1212zuckerberg.jpg" alt="Mark Zuckerberg">
@@ -78,24 +98,53 @@
 							<li><strong>World</strong> A Challenge for Aung San Suu Kyi: Resolving Myanmar’s Ethnic Conflicts</li>
 						</ul>
 					</div>			
-
-		
-
 			</div>
 			
-			
-
 			<aside class="col-lg-3 col-md-4 col-sm-4 bg-warning">Aside</aside>
-		</div>
-	  
-		
-
-
+		</div>  
+	
 		<footer>Footer</footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
+	<script>
+
+		// This script is for the drop down menu display:
+		
+		var width = $(window).width();
+		setMenuBasedOnWidth(width); // show the proper format upon page load
+
+		// check the width on page resize - the function call to setMenuBasedOnWidth will ensure that
+		// the correct "menu" is showing.
+		$(window).resize(function(){
+		   if($(this).width() != width){
+			  width = $(this).width();
+			  setMenuBasedOnWidth(width);
+		   }
+		});
+
+		function setMenuBasedOnWidth(width){
+
+			if (width >= 990){
+			  	// Remove the dropdown-menu class and make li display:inline
+				$("#main-menu").removeClass("dropdown-menu");
+				$("#main-menu").addClass("nav-list")
+				$("#main-menu > li").removeClass("vertical-list");
+				$("#main-menu > li").addClass("horizontal-list");
+				$("#dropdownMenu1").removeClass("visible").addClass("hidden");
+			  }
+			  else{
+				// Restore the dropdown-menu class and make li display:block
+				$("#main-menu").removeClass("nav-list");				
+				$("#main-menu").addClass("dropdown-menu");
+				$("#dropdownMenu1").removeClass("hidden").addClass("visible");
+			  }
+		}
+
+
+	</script>
   </body>
 </html>
